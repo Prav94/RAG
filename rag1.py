@@ -88,6 +88,8 @@ with gr.Blocks() as demo:
     chatbot = gr.Chatbot(type="messages", label="AI Assistant", height=500)
     msg = gr.Textbox(placeholder="Type your message...", label="Your Message")
     msg.submit(chat, [msg, chatbot], [chatbot])
-    # msg.submit(None, None, [msg], _js="() => ''") #clear text box after submit
+    msg.submit(chat, [msg, chatbot], [chatbot]).then(
+    lambda: "", None, [msg]
+    )#clear text box after submit
 
 demo.launch()
